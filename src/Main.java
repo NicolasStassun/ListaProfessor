@@ -42,54 +42,61 @@ public class Main {
         }while (login == true) ;
 
     }
-    public static void menu(){
+    public static void menu() {
+        int opcao;
 
-        int opcao = Integer.parseInt(JOptionPane.showInputDialog("""
-                1 - Cadastrar Círculo
-                2 - Cadastrar Triângulo
-                3 - Cadastrar Retângulo
-                4 - Cadastrar Quadrado
-                5 - Listar as formas
-                6 - Logout
-                """));
+        do {
+            opcao = Integer.parseInt(JOptionPane.showInputDialog("""
+                    1 - Cadastrar Círculo
+                    2 - Cadastrar Triângulo
+                    3 - Cadastrar Retângulo
+                    4 - Cadastrar Quadrado
+                    5 - Listar as formas
+                    6 - Logout
+                    """));
 
-        switch (opcao){
+            switch (opcao) {
 
-            case 1:
-
-
-                break;
-
-            case 2:
+                case 1:
 
 
-                break;
+                    break;
+
+                case 2:
 
 
-            case 3:
-
-                break;
-
-            case 4:
+                    break;
 
 
-                break;
+                case 3:
 
-            case 5:
+                    Retangulo.cadastrarRetangulo();
 
-                break;
+                    break;
 
-            case 6:
+                case 4:
+
+                    Quadrado.cadastrarQuadrado();
+
+                    break;
+
+                case 5:
 
 
-                login = false;
-                contLogin = 0;
-                JOptionPane.showMessageDialog(null,"Logout concluído");
+                    break;
 
-                break;
+                case 6:
 
-        }
 
+                    login = false;
+                    contLogin = 0;
+                    JOptionPane.showMessageDialog(null, "Logout concluído");
+
+                    break;
+
+            }
+
+        } while (opcao != 6);
     }
 
 }
