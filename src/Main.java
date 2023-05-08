@@ -70,13 +70,13 @@ public class Main {
 
                 case 3:
 
-                    Retangulo.cadastrarRetangulo();
+
 
                     break;
 
                 case 4:
 
-                    Quadrado.cadastrarQuadrado();
+
 
                     break;
 
