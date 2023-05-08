@@ -24,4 +24,25 @@ public class Retangulo extends Forma{
     private double calculaPerimetro(){
         return (this.base+this.altura) * 2;
     }
+
+    public static String listarRetangulos(){
+
+        for (Retangulo i:
+                retangulos) {
+
+            return i.toString();
+
+        }
+        return "Não possui retangulos cadastrados";
+
+    }
+
+    @Override
+    public String toString() {
+        return "Retangulo: " + "\n"+
+                "Area: " + area +"\n"+
+                "Perimetro: " + perimetro +"\n"+
+                "Base: " + base +"\n"+
+                "Altura: " + altura +"\n";
+    }
 }
