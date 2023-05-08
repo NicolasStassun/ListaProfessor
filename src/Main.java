@@ -4,7 +4,6 @@ public class Main {
 
     static boolean retepicao = true;
     static boolean login = true;
-    static private int senha = 123;
 
     public static void main(String[] args) {
 
@@ -23,15 +22,15 @@ public class Main {
         do {
 
 
-            for (contLogin = 0; contLogin < 3; contLogin++) {
+            for (contLogin = 0; contLogin <= 3; contLogin++) {
 
-                int login = Integer.parseInt(JOptionPane.showInputDialog("Informe a senha"));
+                String senha = JOptionPane.showInputDialog("Informe a senha");
 
-                if (login == senha) {
-
+                if (senha.equals(Professor.getSenha())) {
 
 
                     menu();
+                    login = true;
 
 
                 }
@@ -41,6 +40,7 @@ public class Main {
             retepicao = false;
 
         }while (login == true) ;
+
     }
     public static void menu(){
 
