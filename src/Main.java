@@ -2,15 +2,17 @@ import javax.swing.*;
 
 public class Main {
 
-    static boolean retepicao = true;
-    static boolean login = true;
+    static boolean retepicao;
+    static boolean login;
+    static Professor elvis = new Professor();
 
     public static void main(String[] args) {
 
+        elvis.setSenha("123");
 
         do {
             login();
-        }while (retepicao == true);
+        } while (retepicao == true);
 
 
     }
@@ -22,7 +24,7 @@ public class Main {
         do {
 
 
-            for (contLogin = 0; contLogin <= 3; contLogin++) {
+            for (contLogin = 1; contLogin <= 3; contLogin++) {
 
                 String senha = JOptionPane.showInputDialog("Informe a senha");
 
@@ -34,14 +36,16 @@ public class Main {
 
 
                 }
+                login = false;
+                retepicao = false;
 
             }
 
-            retepicao = false;
 
-        }while (login == true) ;
+        } while (login == true);
 
     }
+
     public static void menu() {
         int opcao;
 
@@ -77,37 +81,47 @@ public class Main {
 
             }
 
-        } while (opcao != 6);
+        } while (opcao != 3);
     }
+
     public static void menuListarFormas() {
 
         int opcao;
 
         do {
             opcao = Integer.parseInt(JOptionPane.showInputDialog("""
-                    1 - Cadastrar Quadrado
-                    2 - Cadastrar Retangulo
-                    3 - Cadastrar Circulo
-                    4 - Cadastrar Triangulo
+                    1 - Listar Quadrado
+                    2 - Listar Retangulo
+                    3 - Listar Circulo
+                    4 - Mostrar menu de Triangulos
                     5 - Sair
                     """));
 
-            switch (opcao){
+            switch (opcao) {
 
                 case 1:
-
-                    JOptionPane.showMessageDialog(null,Quadrado.listarQuadrados());
-
+                    for (Forma quadrado :
+                            Professor.getForma().getFormas()) {
+                        if (quadrado instanceof Quadrado) {
+                            JOptionPane.showMessageDialog(null, quadrado.toString());
+                        }
+                    }
                     break;
                 case 2:
-
-                    JOptionPane.showMessageDialog(null,Retangulo.listarRetangulos());
-
+                    for (Forma retangulo :
+                            Professor.getForma().getFormas()) {
+                        if (retangulo instanceof Retangulo) {
+                            JOptionPane.showMessageDialog(null, retangulo.toString());
+                        }
+                    }
                     break;
                 case 3:
-
-                    JOptionPane.showMessageDialog(null,Circulo.listarCirculos());
-
+                    for (Forma circulo :
+                            Professor.getForma().getFormas()) {
+                        if (circulo instanceof Circulo) {
+                            JOptionPane.showMessageDialog(null, circulo.toString());
+                        }
+                    }
                     break;
                 case 4:
 
@@ -118,10 +132,10 @@ public class Main {
             }
 
 
-        }while (opcao!=5);
+        } while (opcao != 5);
     }
 
-    public static void listarTriangulos(){
+    public static void listarTriangulos() {
 
         int opcao;
 
@@ -134,92 +148,117 @@ public class Main {
                     5 - Sair
                     """));
 
-            switch (opcao){
+            switch (opcao) {
 
                 case 1:
-
-                    JOptionPane.showMessageDialog(null,Triangulo.listarIsosceles());
-
+                    for (Forma isosceles :
+                            Professor.getForma().getFormas()) {
+                        if (isosceles instanceof Isoceles) {
+                            JOptionPane.showMessageDialog(null, isosceles.toString());
+                        }
+                    }
                     break;
                 case 2:
-
-                    JOptionPane.showMessageDialog(null,Triangulo.listarEquilateros());
-
+                    for (Forma equilatero :
+                            Professor.getForma().getFormas()) {
+                        if (equilatero instanceof Equilatero) {
+                            JOptionPane.showMessageDialog(null, equilatero.toString());
+                        }
+                    }
                     break;
                 case 3:
-
-                    JOptionPane.showMessageDialog(null,Triangulo.listarEscalenos());
-
+                    for (Forma escaleno :
+                            Professor.getForma().getFormas()) {
+                        if (escaleno instanceof Escaleno) {
+                            JOptionPane.showMessageDialog(null, escaleno.toString());
+                        }
+                    }
                     break;
                 case 4:
+                    for (Forma triangulo :
+                            Professor.getForma().getFormas()) {
+                        if (triangulo instanceof Triangulo) {
+                            JOptionPane.showMessageDialog(null, triangulo.toString());
+                        }
+                        break;
 
-                    JOptionPane.showMessageDialog(null,Triangulo.listarTriangulos());
+                    }
 
-                    break;
 
             }
-
-
-        }while (opcao!=5);
-
+        }while (opcao != 5) ;
     }
 
-    public static void menuCadastrarFormas(){
+        public static void menuCadastrarFormas (){
 
-        int opcao;
+            int opcao = 0;
 
-        do {
-            opcao = Integer.parseInt(JOptionPane.showInputDialog("""
-                    1 - Cadastrar Quadrado
-                    2 - Cadastrar Retangulo
-                    3 - Cadastrar Circulo
-                    4 - Cadastrar Triangulo
-                    5 - Sair
-                    """));
+            do {
+                opcao = Integer.parseInt(JOptionPane.showInputDialog("""
+                        1 - Cadastrar Quadrado
+                        2 - Cadastrar Retangulo
+                        3 - Cadastrar Circulo
+                        4 - Cadastrar Triangulo
+                        5 - Sair
+                        """));
 
-            switch (opcao){
+                switch (opcao) {
 
-                case 1:
+                    case 1:
 
-                    double baseQuadrado = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Base"));
+                        double baseQuadrado = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Base"));
 
-                    Quadrado cadastrarQuadrado = new Quadrado(baseQuadrado);
+                        Quadrado cadastrarQuadrado = new Quadrado(baseQuadrado);
 
-                    break;
-                case 2:
+                        Professor.getForma().addForma(cadastrarQuadrado);
 
-                    double baseRetangulo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Base"));
+                        break;
+                    case 2:
 
-                    double alturaRetangulo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Altura"));
+                        double baseRetangulo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Base"));
 
-                    Retangulo cadastrarRetangulo = new Retangulo(baseRetangulo,alturaRetangulo);
+                        double alturaRetangulo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Altura"));
 
-                    break;
-                case 3:
+                        Retangulo cadastrarRetangulo = new Retangulo(baseRetangulo, alturaRetangulo);
 
-                    double raioCirculo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida do Raio"));
+                        Professor.getForma().addForma(cadastrarRetangulo);
 
-                    Circulo cadastrarCirculo = new Circulo(raioCirculo);
+                        break;
+                    case 3:
 
-                    break;
+                        double raioCirculo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida do Raio"));
 
-                case 4:
+                        Circulo cadastrarCirculo = new Circulo(raioCirculo);
 
-                    double lado1 = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Lado 1"));
+                        Professor.getForma().addForma(cadastrarCirculo);
 
-                    double lado2 = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Lado 2"));
+                        break;
 
-                    double lado3 = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Lado 3"));
+                    case 4:
 
-                    Triangulo cadastrarTriangulo = new Triangulo(lado1,lado2,lado3);
+                        double lado1 = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Lado 1"));
 
-                    break;
-            }
+                        double lado2 = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Lado 2"));
+
+                        double lado3 = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Lado 3"));
+
+                        if (lado1 == lado2 && lado2 == lado3) {
+                            Equilatero equilatero = new Equilatero(lado1, lado2, lado3);
+                            Professor.getForma().addForma(equilatero);
+                        } else if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {
+                            Isoceles isoceles = new Isoceles(lado1, lado2, lado3);
+                            Professor.getForma().addForma(isoceles);
+                        } else {
+                            Escaleno escaleno = new Escaleno(lado1, lado2, lado3);
+                            Professor.getForma().addForma(escaleno);
+                        }
+
+                }
+
+                break;
+
+            } while (opcao != 5);
 
 
-        }while (opcao!=5);
-
-
+        }
     }
-
-}

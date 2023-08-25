@@ -2,8 +2,6 @@ import java.util.ArrayList;
 
 public class Retangulo extends Forma{
 
-    private static ArrayList<Retangulo> retangulos = new ArrayList<>();
-
     private double base;
     private double altura;
 
@@ -13,9 +11,7 @@ public class Retangulo extends Forma{
         this.altura = altura;
         this.area = calculaArea();
         this.perimetro = calculaPerimetro();
-
-        retangulos.add(this);
-        this.addForma();
+        this.addForma(this);
 
     }
     private double calculaArea(){
@@ -23,18 +19,6 @@ public class Retangulo extends Forma{
     }
     private double calculaPerimetro(){
         return (this.base+this.altura) * 2;
-    }
-
-    public static String listarRetangulos(){
-
-        for (Retangulo i:
-                retangulos) {
-
-            return i.toString();
-
-        }
-        return "Não possui retangulos cadastrados";
-
     }
 
     @Override

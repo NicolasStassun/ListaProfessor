@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
-public class Triangulo extends Forma{
-
-    private static ArrayList<Triangulo> triangulos = new ArrayList<>();
+public abstract class Triangulo extends Forma{
 
     private double lado1;
     private double lado2;
@@ -14,76 +12,10 @@ public class Triangulo extends Forma{
         this.lado1 = lado1;
         this.lado2 = lado2;
         this.lado3 = lado3;
-        vereficacaoTriangulo(this);
-    }
-    public void addTriangulo(Triangulo triangulo){
-        triangulos.add(triangulo);
+        this.addForma(this);
     }
 
-    private void vereficacaoTriangulo(Triangulo triangulo){
-
-        if (triangulo.lado1 == triangulo.lado2 && triangulo.lado2 == triangulo.lado3) {
-            addTriangulo(triangulo);
-            triangulo.tipo = "Equilatero";
-            triangulo = new Equilatero(triangulo.lado1,triangulo.lado2,triangulo.lado3);
-        } else if (triangulo.lado1 == triangulo.lado2 || triangulo.lado1 == triangulo.lado3 || triangulo.lado2 == triangulo.lado3) {
-            addTriangulo(triangulo);
-            triangulo.tipo = "Isosceles";
-            triangulo = new Isoceles(triangulo.lado1,triangulo.lado2,triangulo.lado3);
-        } else {
-            addTriangulo(triangulo);
-            triangulo.tipo = "Escaleno";
-            triangulo = new Escaleno(triangulo.lado1,triangulo.lado2,triangulo.lado3);
-        }
-
-    }
-    public static String listarTriangulos(){
-
-        for (Triangulo i:
-                triangulos) {
-
-            return i.toString();
-
-        }
-        return "Não possui triangulos cadastrados";
-    }
-
-    public static String listarIsosceles(){
-
-        for (Triangulo i:
-                triangulos) {
-            if(i.tipo.equals("Isosceles")) {
-                return i.toString();
-            }
-        }
-        return "Não possui triangulos isosceles cadastrados";
-    }
-
-    public static String listarEquilateros(){
-
-        for (Triangulo i:
-                triangulos) {
-
-            if(i.tipo.equals("Equilatero")) {
-                return i.toString();
-            }
-
-        }
-        return "Não possui triangulos equilateros cadastrados";
-    }
-
-    public static String listarEscalenos(){
-
-        for (Triangulo i:
-                triangulos) {
-
-            if(i.tipo.equals("Escaleno")) {
-                return i.toString();
-            }
-
-        }
-        return "Não possui triangulos escalenos cadastrados";
-    }
+    public abstract double calcularArea(double lado1, double lado2, double lado3);
 
     @Override
     public String toString() {

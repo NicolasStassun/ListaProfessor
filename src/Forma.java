@@ -2,12 +2,20 @@ import java.util.ArrayList;
 
 public class Forma {
 
-    private static ArrayList<Forma> formas = new ArrayList<>();
+    private ArrayList<Forma> formas = new ArrayList<>();
 
     double area;
     double perimetro;
 
-    public void addForma(){
-        formas.add(this);
+    public void addForma(Forma forma){
+        formas.add(forma);
+    }
+
+    public ArrayList<Forma> getFormas() {
+        return formas;
+    }
+
+    public void setFormas(ArrayList<Forma> formas) {
+        this.formas = formas;
     }
 }
