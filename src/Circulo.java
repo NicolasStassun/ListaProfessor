@@ -4,11 +4,11 @@ public class Circulo extends Forma{
 
     double raio;
 
-    public Circulo(double raio) {
+    public Circulo(double raio, Professor professor) {
         this.raio = raio;
         this.area = calculaArea();
         this.perimetro = calculaPerimetro();
-        this.addForma(this);
+        professor.addForma(this);
 
     }
     private double calculaArea(){

@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class Professor {
 
-    private static Forma formas = new Forma();
+    private ArrayList<Forma> formas = new ArrayList<>();
 
     private static String senha;
 
@@ -11,11 +13,15 @@ public class Professor {
         Professor.senha = senha;
     }
 
-    public static Forma getForma() {
+    public void addForma(Forma forma){
+        formas.add(forma);
+    }
+
+    public ArrayList<Forma> getFormas() {
         return formas;
     }
 
-    public static void setForma(Forma forma) {
-        Professor.formas = forma;
+    public void setFormas(ArrayList<Forma> formas) {
+        this.formas = formas;
     }
 }

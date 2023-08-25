@@ -6,12 +6,12 @@ public class Retangulo extends Forma{
     private double altura;
 
 
-    public Retangulo(double base, double altura) {
+    public Retangulo(double base, double altura, Professor professor) {
         this.base = base;
         this.altura = altura;
         this.area = calculaArea();
         this.perimetro = calculaPerimetro();
-        this.addForma(this);
+        professor.addForma(this);
 
     }
     private double calculaArea(){

@@ -4,12 +4,11 @@ public class Quadrado extends Forma{
 
     private double base;
 
-    public Quadrado(double base) {
+    public Quadrado(double base, Professor professor) {
         this.base = base;
         this.area = calculaArea();
         this.perimetro = calculaPerimetro();
-        this.addForma(this);
-
+        professor.addForma(this);
     }
 
     private double calculaArea(){

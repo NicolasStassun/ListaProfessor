@@ -101,7 +101,7 @@ public class Main {
 
                 case 1:
                     for (Forma quadrado :
-                            Professor.getForma().getFormas()) {
+                            elvis.getFormas()) {
                         if (quadrado instanceof Quadrado) {
                             JOptionPane.showMessageDialog(null, quadrado.toString());
                         }
@@ -109,7 +109,7 @@ public class Main {
                     break;
                 case 2:
                     for (Forma retangulo :
-                            Professor.getForma().getFormas()) {
+                            elvis.getFormas()) {
                         if (retangulo instanceof Retangulo) {
                             JOptionPane.showMessageDialog(null, retangulo.toString());
                         }
@@ -117,7 +117,7 @@ public class Main {
                     break;
                 case 3:
                     for (Forma circulo :
-                            Professor.getForma().getFormas()) {
+                            elvis.getFormas()) {
                         if (circulo instanceof Circulo) {
                             JOptionPane.showMessageDialog(null, circulo.toString());
                         }
@@ -152,7 +152,7 @@ public class Main {
 
                 case 1:
                     for (Forma isosceles :
-                            Professor.getForma().getFormas()) {
+                            elvis.getFormas()) {
                         if (isosceles instanceof Isoceles) {
                             JOptionPane.showMessageDialog(null, isosceles.toString());
                         }
@@ -160,7 +160,7 @@ public class Main {
                     break;
                 case 2:
                     for (Forma equilatero :
-                            Professor.getForma().getFormas()) {
+                            elvis.getFormas()) {
                         if (equilatero instanceof Equilatero) {
                             JOptionPane.showMessageDialog(null, equilatero.toString());
                         }
@@ -168,7 +168,7 @@ public class Main {
                     break;
                 case 3:
                     for (Forma escaleno :
-                            Professor.getForma().getFormas()) {
+                            elvis.getFormas()) {
                         if (escaleno instanceof Escaleno) {
                             JOptionPane.showMessageDialog(null, escaleno.toString());
                         }
@@ -176,7 +176,7 @@ public class Main {
                     break;
                 case 4:
                     for (Forma triangulo :
-                            Professor.getForma().getFormas()) {
+                            elvis.getFormas()) {
                         if (triangulo instanceof Triangulo) {
                             JOptionPane.showMessageDialog(null, triangulo.toString());
                         }
@@ -185,7 +185,8 @@ public class Main {
                     }
 
 
-            }
+            };
+
         }while (opcao != 5) ;
     }
 
@@ -208,9 +209,7 @@ public class Main {
 
                         double baseQuadrado = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Base"));
 
-                        Quadrado cadastrarQuadrado = new Quadrado(baseQuadrado);
-
-                        Professor.getForma().addForma(cadastrarQuadrado);
+                        Quadrado cadastrarQuadrado = new Quadrado(baseQuadrado, elvis);
 
                         break;
                     case 2:
@@ -219,18 +218,15 @@ public class Main {
 
                         double alturaRetangulo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Altura"));
 
-                        Retangulo cadastrarRetangulo = new Retangulo(baseRetangulo, alturaRetangulo);
+                        Retangulo cadastrarRetangulo = new Retangulo(baseRetangulo, alturaRetangulo, elvis);
 
-                        Professor.getForma().addForma(cadastrarRetangulo);
 
                         break;
                     case 3:
 
                         double raioCirculo = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida do Raio"));
 
-                        Circulo cadastrarCirculo = new Circulo(raioCirculo);
-
-                        Professor.getForma().addForma(cadastrarCirculo);
+                        Circulo cadastrarCirculo = new Circulo(raioCirculo, elvis);
 
                         break;
 
@@ -243,14 +239,11 @@ public class Main {
                         double lado3 = Double.parseDouble(JOptionPane.showInputDialog("Informe a medida da Lado 3"));
 
                         if (lado1 == lado2 && lado2 == lado3) {
-                            Equilatero equilatero = new Equilatero(lado1, lado2, lado3);
-                            Professor.getForma().addForma(equilatero);
+                            Equilatero equilatero = new Equilatero(lado1, lado2, lado3, elvis);
                         } else if (lado1 == lado2 || lado1 == lado3 || lado2 == lado3) {
-                            Isoceles isoceles = new Isoceles(lado1, lado2, lado3);
-                            Professor.getForma().addForma(isoceles);
+                            Isoceles isoceles = new Isoceles(lado1, lado2, lado3, elvis);
                         } else {
-                            Escaleno escaleno = new Escaleno(lado1, lado2, lado3);
-                            Professor.getForma().addForma(escaleno);
+                            Escaleno escaleno = new Escaleno(lado1, lado2, lado3, elvis);
                         }
 
                 }
